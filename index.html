@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>占い師のための占い屋さん へとへと</title>
+  <meta name="description" content="占い師さん・セラピストさんのためのメールダウジング相談。メニュー、発信、価格、お客さまとの距離感、活動の続け方を一緒に整理します。" />
+
+  <style>
+    :root {
+      --bg: #fbf7ef;
+      --paper: #fffdf8;
+      --text: #3f352d;
+      --sub: #766a60;
+      --line: #e6d8c8;
+      --accent: #a8755d;
+      --accent-soft: #efe1d5;
+      --green: #7d8b75;
+      --shadow: rgba(83, 62, 44, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      width: min(920px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 72px 0 44px;
+      text-align: center;
+    }
+
+    .small-label {
+      display: inline-block;
+      padding: 4px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--sub);
+      font-size: 0.88rem;
+      background: rgba(255,255,255,0.45);
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      line-height: 1.15;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .subtitle {
+      margin-top: 18px;
+      color: var(--sub);
+      font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
+    .hero-card {
+      margin: 26px auto 0;
+      padding: 28px;
+      max-width: 720px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 16px 40px var(--shadow);
+      text-align: left;
+    }
+
+    .hero-symbol {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    section {
+      padding: 44px 0;
+    }
+
+    h2 {
+      font-size: 1.65rem;
+      font-weight: 500;
+      margin: 0 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+
+    p {
+      margin: 0 0 1.2em;
+    }
+
+    .note {
+      color: var(--sub);
+      font-size: 0.96rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 28px var(--shadow);
+    }
+
+    .price {
+      margin: 12px 0;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .flow {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+    }
+
+    .flow-item {
+      position: relative;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 18px 18px 54px;
+    }
+
+    .flow-item::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 0.85rem;
+      text-align: center;
+      line-height: 24px;
+    }
+
+    .notice {
+      background: #f5eadf;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      border: 1px solid var(--accent);
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    footer {
+      padding: 44px 0 64px;
+      text-align: center;
+      color: var(--sub);
+      font-size: 0.9rem;
+    }
+
+    .letter {
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 10px 28px var(--shadow);
+    }
+
+    ul {
+      margin: 0 0 1em;
+      padding-left: 1.4em;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 52px 0 28px;
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      section {
+        padding: 34px 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="small-label">占い師さん・セラピストさんのためのメールダウジング相談</div>
+      <h1>占い師のための<br>占い屋さん<br>へとへと</h1>
+      <p class="subtitle">占う側の人も、ときどき迷います。</p>
+
+      <div class="hero-card">
+        <div class="hero-symbol">✉︎ ◇</div>
+        <p>
+          メニューのこと、発信のこと、価格のこと、お客さまとの距離感、これからの活動の続け方。
+          自分のことになると見えにくくなる迷いを、ダウジングで一緒に整理するメール鑑定です。
+        </p>
+        <p>
+          通話で話す元気がないときも、まとまらない文章のまま送っていただいて大丈夫です。
+          へとへとのまま、手紙を出すようにご相談ください。
+        </p>
+
+        <div class="buttons">
+          <a class="btn" href="#menu">メニューを見る</a>
+          <a class="btn secondary" href="#contact">申し込み方法を見る</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>へとへとについて</h2>
+        <div class="letter">
+          <p>
+            「占い師なのに、自分のことになると分からない」<br>
+            「メニューや発信を考えるだけで、ぐったりしてしまう」<br>
+            「お客さまとの距離感や、これからの働き方に迷っている」
+          </p>
+          <p>
+            そんな占い師さん・セラピストさん・スピリチュアル系活動者さんのための、
+            小さなメール鑑定です。
+          </p>
+          <p>
+            強い成功論や、きらきらした起業アドバイスではなく、
+            今のあなたが無理なく続けられる形を、ダウジングで一緒に見ていきます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap">
+        <h2>メニュー</h2>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag">小さな迷いに</span>
+            <h3>ちょっとへとへと便</h3>
+            <p class="price">1,500円</p>
+            <p>
+              小さな迷いを1件だけ見たい方向け。
+              A/Bで迷っていること、メニュー名、価格、今日どう動くかなどをダウジングで確認します。
+            </p>
+            <p class="note">目安：質問1件／短めのお返事</p>
+          </article>
+
+          <article class="card">
+            <span class="tag">いちばんおすすめ</span>
+            <h3>ぐったり棚卸し便</h3>
+            <p class="price">3,500円</p>
+            <p>
+              活動全体を少し見直したい方向け。
+              今しんどいこと、続けたいこと、手放したいこと、育てるとよさそうな方向を整理します。
+            </p>
+            <p class="note">目安：複数項目のダウジング＋整理文</p>
+          </article>
+
+          <article class="card">
+            <span class="tag">活動の見直しに</span>
+            <h3>へとへと作戦会議便</h3>
+            <p class="price">5,500円</p>
+            <p>
+              占い師としての働き方、売り場、発信、お客さまとの距離感などを広めに見たい方向け。
+              これからの活動の軸を一緒に整えます。
+            </p>
+            <p class="note">目安：活動全体の整理＋今後の方向性</p>
+          </article>
+        </div>
+
+        <p class="note" style="margin-top: 18px;">
+          ※価格や内容は仮設定です。正式な受付時に変更する場合があります。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>自動鑑定ではありません</h2>
+        <div class="notice">
+          <p>
+            へとへとでは、AIによる自動鑑定やテンプレート返信ではなく、
+            ご相談文を一通ずつ読み、ペンデュラムによるダウジングで確認しながらお返事しています。
+          </p>
+          <p>
+            文章がまとまっていなくても大丈夫です。
+            「何に疲れているのか分からない」「どう聞けばいいか分からない」という状態からでも、
+            こちらで問いを整理しながら鑑定します。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>こんなときに</h2>
+        <div class="letter">
+          <ul>
+            <li>自分の活動の方向性が分からなくなった</li>
+            <li>メニューや価格を決めるのに疲れてしまった</li>
+            <li>発信の温度感に迷っている</li>
+            <li>お客さまとの距離感で消耗している</li>
+            <li>今のやり方を続けていいのか確認したい</li>
+            <li>通話で話す元気はないけれど、誰かに整理してほしい</li>
+          </ul>
+          <p>
+            「売れる占い師になる方法」を教える場所ではありません。<br>
+            あなたが無理なく続けられる形を、一緒に探す場所です。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>鑑定の流れ</h2>
+
+        <div class="flow">
+          <div class="flow-item">
+            <h3>お申し込み</h3>
+            <p>
+              フォームまたは指定の窓口より、メニューを選んでお申し込みください。
+            </p>
+          </div>
+
+          <div class="flow-item">
+            <h3>ご相談文の送信</h3>
+            <p>
+              今の状況、迷っていること、見てほしい内容をお送りください。
+              箇条書きやまとまっていない文章でも大丈夫です。
+            </p>
+          </div>
+
+          <div class="flow-item">
+            <h3>ダウジング鑑定</h3>
+            <p>
+              ご相談文を読んだうえで、問いを整理し、ペンデュラムで確認しながら鑑定します。
+            </p>
+          </div>
+
+          <div class="flow-item">
+            <h3>メールでお返事</h3>
+            <p>
+              鑑定結果と、今後の整理に使えそうな視点を文章でお返しします。
+              ご自身のタイミングでゆっくりお読みください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>鑑定できないこと</h2>
+        <div class="notice">
+          <ul>
+            <li>医療・病気・妊娠・生死に関わる判断</li>
+            <li>法律・税金・投資・ギャンブルに関わる判断</li>
+            <li>試験や審査などの合否を保証する内容</li>
+            <li>人の不幸を願う内容</li>
+            <li>「必ず叶う」「絶対成功する」といった保証</li>
+          </ul>
+          <p>
+            必要に応じて、専門機関や専門家への相談をおすすめする場合があります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>お申し込み・お問い合わせ</h2>
+        <div class="letter">
+          <p>
+            受付準備中です。  
+            準備ができしだい、こちらにお申し込みフォームや決済ページへのリンクを掲載します。
+          </p>
+
+          <div class="buttons">
+            <a class="btn" href="#">お申し込みフォーム</a>
+            <a class="btn secondary" href="#">お問い合わせ</a>
+            <a class="btn secondary" href="#">通常鑑定はこちら</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>占い師のための占い屋さん へとへと</p>
+      <p>へとへとのまま、手紙を出すように。</p>
+    </div>
+  </footer>
+</body>
+</html>
